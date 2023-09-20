@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Classes\ConexaoSQL.cs" />
     <Compile Include="Classes\Crypto.cs" />
+    <Compile Include="Classes\Funcionario.cs" />
     <Compile Include="Telas\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
