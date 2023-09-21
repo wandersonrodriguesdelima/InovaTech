@@ -15,6 +15,7 @@ namespace InovaTechSquadHotel.Classes
         public string CPF { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
+        public string Telefone { get; set; }
         public string Cargo { get; set; }
         public bool Ativo { get; set; }
 
@@ -29,13 +30,14 @@ namespace InovaTechSquadHotel.Classes
 
         }
 
-        public Funcionario(int id, string nome, string cPF, string email, string senha, string cargo, bool ativo)
+        public Funcionario(int id, string nome, string cpf, string email, string senha,string telefone, string cargo, bool ativo)
         {
             Id = id;
             Nome = nome;
-            CPF = cPF;
+            CPF = cpf;
             Email = email;
             Senha = senha;
+            Telefone = telefone;
             Cargo = cargo;
             Ativo = ativo;
         }
@@ -44,10 +46,95 @@ namespace InovaTechSquadHotel.Classes
 
         #region Métodos
 
-        public void RealizarLogin()
+        public static Funcionario RealizarLogin(string email, string senha)
         {
+           
+                string query = string.Format($"SELECT * FROM Funcionario WHERE Email = '{email}'");
+                ConexaoSQL cn = new ConexaoSQL(query);
 
+                Funcionario funcionario = new Funcionario();
+
+                try
+                {
+                    cn.AbriConexao();
+                    cn.dr = cn.comando.ExecuteReader();
+
+                    if (cn.dr.HasRows)
+                    {
+                        while (cn.dr.Read())
+                        {
+                            funcionario.Id = Convert.ToInt32(cn.dr[0]);
+                            funcionario.Nome = cn.dr[1].ToString();
+                            funcionario.CPF = cn.dr[2].ToString();
+                            funcionario.Email = cn.dr[3].ToString();
+                            funcionario.Senha = cn.dr[4].ToString();
+                            funcionario.Telefone = cn.dr[5].ToString();
+                            funcionario.Cargo = cn.dr[6].ToString();
+                            funcionario.Ativo = Convert.ToBoolean(cn.dr[7]);
+                        }
+                        if (funcionario.Senha == Crypto.Sha256(senha))
+                        {
+                            if (funcionario.Ativo)
+                            {
+                                return funcionario;
+                            }
+                            else
+                            {
+                                throw new Exception("Usuário bloquado");
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception("Senha incorreta");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Email inexistente");
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            #endregion
         }
-        #endregion
+
+        public static List<Funcionario> BuscarFuncionario() 
+        {
+            string query = string.Format($"SELECT * FROM Funcionario");
+            ConexaoSQL cn = new ConexaoSQL(query);
+
+            List<Funcionario> funcionarios = new List<Funcionario>();
+
+            try
+            {
+                cn.AbriConexao();
+                cn.dr = cn.comando.ExecuteReader();
+                
+                while (cn.dr.Read())
+                {
+                    funcionarios.Add(new Funcionario()
+                    {
+                        Id = Convert.ToInt32(cn.dr[0]),
+                        Nome = cn.dr[1].ToString(),
+                        CPF = cn.dr[2].ToString(),
+                        Email = cn.dr[3].ToString(),
+                        Senha = cn.dr[4].ToString(),
+                        Telefone = cn.dr[5].ToString(),
+                        Cargo = cn.dr[5].ToString(),
+                        Ativo = Convert.ToBoolean(cn.dr[6]),
+                    });
+                }
+                return funcionarios;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

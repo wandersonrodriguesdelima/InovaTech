@@ -1,6 +1,6 @@
 ﻿namespace InovaTechSquadHotel
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.LblTxt = new System.Windows.Forms.Label();
-            this.LblLogin = new System.Windows.Forms.Label();
+            this.TxtSenha = new System.Windows.Forms.TextBox();
+            this.TxtEmail = new System.Windows.Forms.TextBox();
+            this.LblSenha = new System.Windows.Forms.Label();
             this.BtnSair = new System.Windows.Forms.Button();
             this.BtnEntrar = new System.Windows.Forms.Button();
-            this.LblSenha = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.LblEmail = new System.Windows.Forms.Label();
+            this.LblTxt = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.TxtSenha);
+            this.groupBox1.Controls.Add(this.TxtEmail);
             this.groupBox1.Controls.Add(this.LblSenha);
             this.groupBox1.Controls.Add(this.BtnSair);
             this.groupBox1.Controls.Add(this.BtnEntrar);
-            this.groupBox1.Controls.Add(this.LblLogin);
+            this.groupBox1.Controls.Add(this.LblEmail);
             this.groupBox1.Controls.Add(this.LblTxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -55,23 +55,28 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // LblTxt
+            // TxtSenha
             // 
-            this.LblTxt.AutoSize = true;
-            this.LblTxt.Location = new System.Drawing.Point(196, 24);
-            this.LblTxt.Name = "LblTxt";
-            this.LblTxt.Size = new System.Drawing.Size(208, 24);
-            this.LblTxt.TabIndex = 0;
-            this.LblTxt.Text = "Acesso Golden Hotel";
+            this.TxtSenha.Location = new System.Drawing.Point(195, 203);
+            this.TxtSenha.Name = "TxtSenha";
+            this.TxtSenha.Size = new System.Drawing.Size(265, 29);
+            this.TxtSenha.TabIndex = 6;
             // 
-            // LblLogin
+            // TxtEmail
             // 
-            this.LblLogin.AutoSize = true;
-            this.LblLogin.Location = new System.Drawing.Point(56, 134);
-            this.LblLogin.Name = "LblLogin";
-            this.LblLogin.Size = new System.Drawing.Size(62, 24);
-            this.LblLogin.TabIndex = 1;
-            this.LblLogin.Text = "Login";
+            this.TxtEmail.Location = new System.Drawing.Point(195, 131);
+            this.TxtEmail.Name = "TxtEmail";
+            this.TxtEmail.Size = new System.Drawing.Size(265, 29);
+            this.TxtEmail.TabIndex = 5;
+            // 
+            // LblSenha
+            // 
+            this.LblSenha.AutoSize = true;
+            this.LblSenha.Location = new System.Drawing.Point(56, 203);
+            this.LblSenha.Name = "LblSenha";
+            this.LblSenha.Size = new System.Drawing.Size(70, 24);
+            this.LblSenha.TabIndex = 4;
+            this.LblSenha.Text = "Senha";
             // 
             // BtnSair
             // 
@@ -90,37 +95,33 @@
             this.BtnEntrar.TabIndex = 2;
             this.BtnEntrar.Text = "Entrar";
             this.BtnEntrar.UseVisualStyleBackColor = true;
+            this.BtnEntrar.Click += new System.EventHandler(this.BtnEntrar_Click);
             // 
-            // LblSenha
+            // LblEmail
             // 
-            this.LblSenha.AutoSize = true;
-            this.LblSenha.Location = new System.Drawing.Point(56, 203);
-            this.LblSenha.Name = "LblSenha";
-            this.LblSenha.Size = new System.Drawing.Size(70, 24);
-            this.LblSenha.TabIndex = 4;
-            this.LblSenha.Text = "Senha";
+            this.LblEmail.AutoSize = true;
+            this.LblEmail.Location = new System.Drawing.Point(56, 134);
+            this.LblEmail.Name = "LblEmail";
+            this.LblEmail.Size = new System.Drawing.Size(62, 24);
+            this.LblEmail.TabIndex = 1;
+            this.LblEmail.Text = "Email";
             // 
-            // textBox1
+            // LblTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(195, 131);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(265, 29);
-            this.textBox1.TabIndex = 5;
+            this.LblTxt.AutoSize = true;
+            this.LblTxt.Location = new System.Drawing.Point(196, 24);
+            this.LblTxt.Name = "LblTxt";
+            this.LblTxt.Size = new System.Drawing.Size(208, 24);
+            this.LblTxt.TabIndex = 0;
+            this.LblTxt.Text = "Acesso Golden Hotel";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(195, 203);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(265, 29);
-            this.textBox2.TabIndex = 6;
-            // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 403);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "Login";
             this.Text = "Tela Login";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -131,12 +132,12 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtSenha;
+        private System.Windows.Forms.TextBox TxtEmail;
         private System.Windows.Forms.Label LblSenha;
         private System.Windows.Forms.Button BtnSair;
         private System.Windows.Forms.Button BtnEntrar;
-        private System.Windows.Forms.Label LblLogin;
+        private System.Windows.Forms.Label LblEmail;
         private System.Windows.Forms.Label LblTxt;
     }
 }
